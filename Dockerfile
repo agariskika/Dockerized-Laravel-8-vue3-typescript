@@ -7,4 +7,3 @@ RUN set -ex \
     	&& docker-php-ext-install pdo pdo_pgsql
 
 WORKDIR /var/www/html
-
