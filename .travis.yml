@@ -3,7 +3,7 @@ os:
 language: php
 dist: trusty
 php:
-  - '8.0.0'
+  - '8.0'
 services:
   - docker
 jobs:

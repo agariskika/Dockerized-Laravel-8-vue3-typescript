@@ -1,9 +1,16 @@
 FROM php:8.0-fpm-alpine
+MAINTAINER Aga Riskika agariskika@mail.ugm.ac.id
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer global require hirak/prestissimo
 
-RUN set -ex \
-    	&& apk --no-cache add postgresql-dev nodejs yarn npm\
-    	&& docker-php-ext-install pdo pdo_pgsql
+RUN mkdir /home/app/app
+WORKDIR /home/app/app
 
-WORKDIR /var/www/html
+COPY composer.json composer.json
+RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /home/app/.composer
+
+COPY --chown=app:root . ./
+
+RUN composer dump-autoload --no-scripts --no-dev --optimize
+
+EXPOSE 8080
