@@ -3,7 +3,7 @@ os:
 language: php
 dist: bionic
 php:
-  - '8.1.0'
+  - '8.0'
 install: skip
 script: skip
 services:
