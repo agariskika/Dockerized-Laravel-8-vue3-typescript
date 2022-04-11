@@ -22,7 +22,7 @@ jobs:
       name: "Build and Push Images Docker" 
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t laravel-php-vue .
+      - docker build -t laravel-vue .
       - docker images
-      - docker tag laravel-php-vue $DOCKER_USERNAME/laravel-php-vue
-      - docker push $DOCKER_USERNAME/laravel-php-vue
+      - docker tag laravel-vue $DOCKER_USERNAME/laravel-vue
+      - docker push $DOCKER_USERNAME/laravel-vue
