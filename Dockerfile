@@ -7,3 +7,13 @@ RUN set -ex \
     	&& docker-php-ext-install pdo pdo_pgsql
 
 WORKDIR /var/www/html
+
+COPY . /var/www/html
+
+COPY --chown=www-data:www-data . /var/www/html/
+
+RUN chown -R www-data:www-data /var/www/html
+
+RUN composer install
+
+EXPOSE 9000
